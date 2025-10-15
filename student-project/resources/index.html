@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Web Design Resources — Nico Leocata</title>
+    <meta
+      name="description"
+      content="A concise personal reference guide to classic and modern web design tools."
+    />
+    <link rel="stylesheet" href="../assets/css/index.css" />
+    <link rel="stylesheet" href="../assets/css/resources.css" />
+  </head>
+  <body>
+    <header class="resources-header">
+      <div class="container">
+        <h1>Web Design Resources — Nico Leocata</h1>
+        <p class="lead">
+          A personal reference guide comparing classic and modern web design
+          tools (2025).
+        </p>
+      </div>
+    </header>
+
+    <nav class="resources-nav" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="#css-frameworks">CSS Frameworks</a>
+        <a href="#js-libraries">JavaScript Libraries</a>
+        <a href="#static-site-generators">Static Site Generators</a>
+        <a href="#saas-cms-tools">SaaS / CMS Tools</a>
+      </div>
+    </nav>
+
+    <main class="container" id="main-content">
+      <section
+        id="css-frameworks"
+        class="tools-section"
+        aria-labelledby="css-frameworks-title"
+      >
+        <h2 id="css-frameworks-title">CSS Frameworks</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>
+              <a href="https://getbootstrap.com/" target="_blank" rel="noopener"
+                >Bootstrap</a
+              >
+            </h3>
+            <span class="runtime-badge standalone">standalone</span>
+            <div class="tool-info">
+              <p>
+                <strong>Description:</strong> Mature CSS framework focused on
+                responsive components and utilities.
+              </p>
+              <p>
+                <strong>Technology:</strong> CSS, optional JS (vanilla/bootstrap
+                bundle).
+              </p>
+              <p>
+                <strong>Learning curve:</strong> Low — quick to prototype with
+                classes.
+              </p>
+              <p>
+                <strong>Use case:</strong> Rapid prototypes, admin UIs,
+                consistent layout systems.
+              </p>
+            </div>
+            <div class="personal-notes">
+              Bootstrap is my go-to for fast scaffolding when visual consistency
+              and speed matter more than bespoke styles.
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <h3>
+              <a href="https://tailwindcss.com/" target="_blank" rel="noopener"
+                >Tailwind CSS</a
+              >
+            </h3>
+            <span class="runtime-badge nodejs">nodejs</span>
+            <div class="tool-info">
+              <p>
+                <strong>Description:</strong> Utility-first CSS framework for
+                composing custom designs quickly.
+              </p>
+              <p>
+                <strong>Technology:</strong> PostCSS build step, Node.js
+                tooling.
+              </p>
+              <p>
+                <strong>Learning curve:</strong> Medium — mental model differs
+                from semantic class naming.
+              </p>
+              <p>
+                <strong>Use case:</strong> Highly-custom, maintainable design
+                systems and component-based UIs.
+              </p>
+            </div>
+            <div class="personal-notes">
+              Tailwind speeds design iteration but requires a build step; I use
+              it for portfolio pieces where polish matters.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="js-libraries"
+        class="tools-section"
+        aria-labelledby="js-libraries-title"
+      >
+        <h2 id="js-libraries-title">JavaScript Libraries</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>
+              <a href="https://react.dev/" target="_blank" rel="noopener"
+                >React</a
+              >
+            </h3>
+            <span class="runtime-badge nodejs">nodejs</span>
+            <div class="tool-info">
+              <p>
+                <strong>Description:</strong> Component-driven UI library for
+                building interactive user interfaces.
+              </p>
+              <p>
+                <strong>Technology:</strong> JavaScript/JSX, Node.js build tools
+                (Vite, Webpack).
+              </p>
+              <p>
+                <strong>Learning curve:</strong> Medium to high depending on
+                ecosystem adoption.
+              </p>
+              <p>
+                <strong>Use case:</strong> Complex single-page apps and
+                interactive components.
+              </p>
+            </div>
+            <div class="personal-notes">
+              I pick React when I need predictable state and a rich component
+              ecosystem; otherwise it's overkill for static pages.
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <h3>
+              <a
+                href="https://greensock.com/gsap/"
+                target="_blank"
+                rel="noopener"
+                >GSAP</a
+              >
+            </h3>
+            <span class="runtime-badge standalone">standalone</span>
+            <div class="tool-info">
+              <p>
+                <strong>Description:</strong> High-performance animation library
+                for precise, timeline-driven animations.
+              </p>
+              <p>
+                <strong>Technology:</strong> Vanilla JS library, works in
+                browsers directly.
+              </p>
+              <p>
+                <strong>Learning curve:</strong> Low to medium — API is
+                straightforward for basic animations.
+              </p>
+              <p>
+                <strong>Use case:</strong> Micro-interactions, page transitions,
+                and polished motion design.
+              </p>
+            </div>
+            <div class="personal-notes">
+              GSAP is excellent for smooth, complex animations; I use it
+              sparingly to enhance UX without hurting performance.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="static-site-generators"
+        class="tools-section"
+        aria-labelledby="ssg-title"
+      >
+        <h2 id="ssg-title">Static Site Generators</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>
+              <a href="https://gohugo.io/" target="_blank" rel="noopener"
+                >Hugo</a
+              >
+            </h3>
+            <span class="runtime-badge binary">binary</span>
+            <div class="tool-info">
+              <p>
+                <strong>Description:</strong> Ultra-fast static site generator
+                written in Go.
+              </p>
+              <p>
+                <strong>Technology:</strong> Go binary, templates, front matter
+                content files.
+              </p>
+              <p>
+                <strong>Learning curve:</strong> Low to medium — fast builds and
+                simple templating.
+              </p>
+              <p>
+                <strong>Use case:</strong> Blogs, documentation sites, and large
+                static sites that need quick builds.
+              </p>
+            </div>
+            <div class="personal-notes">
+              Hugo's speed is compelling for large content sites; I use it when
+              build time and simplicity are priorities.
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <h3>
+              <a href="https://jekyllrb.com/" target="_blank" rel="noopener"
+                >Jekyll</a
+              >
+            </h3>
+            <span class="runtime-badge ruby">ruby</span>
+            <div class="tool-info">
+              <p>
+                <strong>Description:</strong> The classic Ruby-based static site
+                generator powering many GitHub Pages sites.
+              </p>
+              <p>
+                <strong>Technology:</strong> Ruby, Liquid templating, front
+                matter.
+              </p>
+              <p>
+                <strong>Learning curve:</strong> Low for basic use; Ruby
+                knowledge helps for advanced customization.
+              </p>
+              <p>
+                <strong>Use case:</strong> Personal blogs and simple content
+                sites, especially with GitHub Pages.
+              </p>
+            </div>
+            <div class="personal-notes">
+              Jekyll is dependable for simple blogs; I appreciate its
+              convention-over-configuration approach for straightforward content
+              sites.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="saas-cms-tools"
+        class="tools-section"
+        aria-labelledby="saas-cms-title"
+      >
+        <h2 id="saas-cms-title">SaaS / CMS Tools</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>
+              <a
+                href="https://www.netlifycms.org/"
+                target="_blank"
+                rel="noopener"
+                >Netlify CMS</a
+              >
+            </h3>
+            <span class="runtime-badge saas">saas</span>
+            <div class="tool-info">
+              <p>
+                <strong>Description:</strong> Git-based CMS providing an
+                editorial UI for static sites.
+              </p>
+              <p>
+                <strong>Technology:</strong> JavaScript admin UI that connects
+                to Git workflows.
+              </p>
+              <p>
+                <strong>Learning curve:</strong> Low to medium — straightforward
+                setup with Git-backed workflows.
+              </p>
+              <p>
+                <strong>Use case:</strong> Teams who want a CMS for static sites
+                without a complex backend.
+              </p>
+            </div>
+            <div class="personal-notes">
+              Netlify CMS brings content editing to static sites with minimal
+              friction; I like it for collaborative blog workflows.
+            </div>
+          </div>
+
+          <div class="tool-card">
+            <h3>
+              <a href="https://hygraph.com/" target="_blank" rel="noopener"
+                >Hygraph</a
+              >
+            </h3>
+            <span class="runtime-badge saas">saas</span>
+            <div class="tool-info">
+              <p>
+                <strong>Description:</strong> Headless CMS (GraphQL-first) that
+                manages content and delivers via APIs.
+              </p>
+              <p>
+                <strong>Technology:</strong> Cloud SaaS, GraphQL APIs,
+                integrates with any frontend.
+              </p>
+              <p>
+                <strong>Learning curve:</strong> Medium — requires understanding
+                GraphQL and content modeling.
+              </p>
+              <p>
+                <strong>Use case:</strong> Complex content models for
+                multi-platform publishing and decoupled architectures.
+              </p>
+            </div>
+            <div class="personal-notes">
+              Hygraph is powerful for structured content across channels; I use
+              it when the project needs a robust API and editorial roles.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="reflection"
+        class="tools-section"
+        aria-labelledby="reflection-title"
+      >
+        <h2 id="reflection-title">Critical Reflection</h2>
+        <article>
+          <h3>Tools that best fit my workflow</h3>
+          <p>
+            I prefer Tailwind CSS and Hugo for portfolio work: Tailwind for
+            fast, precise styling, Hugo for instant builds and simple content
+            pipelines. For interactive components I selectively use React or
+            vanilla JS with GSAP for motion.
+          </p>
+
+          <h3>Trade-offs: Speed vs. Flexibility</h3>
+          <p>
+            Hugo and Bootstrap favor speed and predictable outcomes, while
+            Tailwind and React provide more flexibility at the cost of setup and
+            larger bundles. Choose speed when deadlines matter, flexibility when
+            the design requires unique interactions or extensive customization.
+          </p>
+
+          <h3>Trade-offs: Dependencies vs. Simplicity</h3>
+          <p>
+            Node-based toolchains (Tailwind, React) add dependencies and build
+            complexity but yield modularity and tooling benefits. Ruby (Jekyll)
+            and binary tools (Hugo) can be simpler to run but may have ecosystem
+            trade-offs. Standalone libraries (GSAP, Bootstrap) often offer the
+            best simplicity with minimal setup.
+          </p>
+
+          <h3>How Node.js affects my process</h3>
+          <p>
+            Node.js enables modern workflows (bundlers, PostCSS, npm packages).
+            It increases developer velocity through automation (linting, builds)
+            but requires dependency management and occasional troubleshooting.
+            For static portfolio pages I weigh Node's benefits against the need
+            for a minimal, easily-deployable site.
+          </p>
+
+          <h3>Using these tools in my portfolio</h3>
+          <p>
+            I would build the portfolio with Hugo for fast builds, style with
+            Tailwind for visual consistency, and add selective React components
+            (or plain JS) for interactive showcases. Use Hygraph or Netlify CMS
+            to manage long-form content if I need non-technical editing.
+            Finally, apply GSAP for a few tasteful transitions to elevate
+            perceived quality.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="resources-footer">
+      <div class="container">
+        <p>© 2025 Nyllow, Inc. Every right reserved</p>
+      </div>
+    </footer>
+    <div class="cursor-follower" id="cursor-follower" aria-hidden="true"></div>
+    <script>
+      (function () {
+        const follower = document.getElementById("cursor-follower");
+        if (!follower) return;
+
+        let mouseX = 0,
+          mouseY = 0,
+          posX = 0,
+          posY = 0;
+        const speed = 0.18;
+
+        function animate() {
+          posX += (mouseX - posX) * speed;
+          posY += (mouseY - posY) * speed;
+          follower.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%,-50%)`;
+          requestAnimationFrame(animate);
+        }
+
+        document.addEventListener(
+          "mousemove",
+          (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+          },
+          { passive: true }
+        );
+
+        // enlarge when hovering links or tool cards
+        const hoverTargets = Array.from(
+          document.querySelectorAll("a, .tool-card")
+        );
+        hoverTargets.forEach((el) => {
+          el.addEventListener("mouseenter", () =>
+            follower.classList.add("cursor-hover")
+          );
+          el.addEventListener("mouseleave", () =>
+            follower.classList.remove("cursor-hover")
+          );
+        });
+
+        // hide on blur / when leaving window
+        document.addEventListener(
+          "mouseleave",
+          () => (follower.style.opacity = "0")
+        );
+        document.addEventListener(
+          "mouseenter",
+          () => (follower.style.opacity = "1")
+        );
+
+        requestAnimationFrame(animate);
+      })();
+    </script>
+  </body>
+</html>

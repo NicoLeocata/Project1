@@ -1,0 +1,226 @@
+/* Resources page specific styles */
+.resources-header {
+  background: #000000; /* black header per user request */
+  color: var(--white);
+  padding: var(--space-lg) 0;
+  text-align: center;
+}
+.resources-header h1 {
+  margin-bottom: 6px;
+  color: var(--white); /* make sure header title stays white */
+}
+.resources-header .lead {
+  color: var(--white); /* ensure subtitle text is white */
+}
+
+.resources-nav {
+  background: var(--white);
+  box-shadow: var(--muted-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.nav-inner {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  padding: var(--space-sm) 0;
+}
+.nav-inner a {
+  color: var(--card-text-color);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.nav-inner a:hover,
+.nav-inner a:focus {
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.tools-section {
+  margin-bottom: var(--space-lg);
+  padding-top: var(--space-lg);
+}
+.tools-section {
+  border-bottom: 1px solid var(--section-divider);
+}
+.tools-section h2 {
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+.tools-section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+/* make section titles visible on dark background */
+.tools-section h2 {
+  color: var(--white);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-md);
+}
+
+.tool-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border-radius: calc(var(--base-radius) + 2px);
+  padding: calc(var(--space-md) + 6px);
+  border: 1px solid rgba(10, 10, 10, 0.06);
+  box-shadow: 0 8px 22px rgba(2, 6, 23, 0.12), 0 2px 6px rgba(2, 6, 23, 0.06);
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    box-shadow 220ms ease;
+}
+.tool-card::before {
+  /* top accent stripe */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+.tool-card:hover,
+.tool-card:focus-within {
+  transform: translateY(-10px) rotate(-0.2deg);
+  box-shadow: 0 22px 48px rgba(2, 6, 23, 0.18), 0 6px 12px rgba(2, 6, 23, 0.08);
+}
+
+.tool-card h3 {
+  margin-bottom: var(--space-xs);
+  color: var(--card-text-color);
+  font-weight: 700;
+}
+.tool-info p {
+  margin-bottom: 6px;
+  color: var(--card-text-color);
+  font-size: 0.95rem;
+}
+
+.runtime-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--space-sm);
+}
+.runtime-badge.nodejs {
+  background: #16a34a;
+} /* green */
+.runtime-badge.standalone {
+  background: #1e40af;
+} /* blue */
+.runtime-badge.saas {
+  background: #f59e0b;
+  color: #132226;
+} /* amber */
+.runtime-badge.ruby {
+  background: #e11d48;
+} /* red */
+.runtime-badge.binary {
+  background: #0ea5e9;
+} /* cyan */
+
+.personal-notes {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm);
+  border-left: 4px solid var(--accent-color);
+  background: linear-gradient(
+    180deg,
+    rgba(245, 158, 11, 0.06),
+    rgba(250, 250, 250, 0.02)
+  );
+  color: var(--card-text-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* place runtime badge at top-right of card for a badge-like feel */
+.tool-card .runtime-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin: 0;
+  transform: translateZ(0);
+}
+
+.resources-footer {
+  background: var(--white); /* footer background set to white */
+  color: var(--card-text-color); /* footer text black */
+  padding: var(--space-md) 0;
+  text-align: center;
+  margin-top: var(--space-lg);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Divider lines between major regions */
+.resources-header {
+  border-bottom: 1px solid var(--section-divider);
+}
+.resources-nav {
+  border-bottom: 1px solid var(--section-divider);
+}
+/* end of resources.css */
+
+/* Custom cursor follower */
+.cursor-follower {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.95);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 180ms ease, height 180ms ease, background 180ms ease,
+    opacity 180ms ease, box-shadow 180ms ease;
+  z-index: 99999;
+  mix-blend-mode: normal;
+}
+.cursor-follower.cursor-hover {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-color);
+  box-shadow: 0 18px 40px rgba(17, 24, 39, 0.18);
+  opacity: 0.98;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-follower {
+    display: none;
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .nav-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .resources-header {
+    padding: var(--space-md) 0;
+  }
+  .tool-card {
+    padding: var(--space-sm);
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+  }
+}
