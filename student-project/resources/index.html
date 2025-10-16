@@ -28,6 +28,7 @@
         <a href="#js-libraries">JavaScript Libraries</a>
         <a href="#static-site-generators">Static Site Generators</a>
         <a href="#saas-cms-tools">SaaS / CMS Tools</a>
+        <a href="#reflection">Critical Reflection</a>
       </div>
     </nav>
 
@@ -330,50 +331,40 @@
       >
         <h2 id="reflection-title">Critical Reflection</h2>
         <article>
-          <h3>Tools that best fit my workflow</h3>
+          <h3>Designing with Constraints</h3>
           <p>
-            I prefer Tailwind CSS and Hugo for portfolio work: Tailwind for
-            fast, precise styling, Hugo for instant builds and simple content
-            pipelines. For interactive components I selectively use React or
-            vanilla JS with GSAP for motion.
+            After exploring and comparing all these tools, I realized that
+            understanding them helps me appreciate how design and development
+            connect, but it also made me aware of how complex web development
+            can get. Between build steps, dependencies, and frameworks that
+            change every year, it often feels like a world that demands constant
+            technical focus rather than creative direction.
           </p>
 
-          <h3>Trade-offs: Speed vs. Flexibility</h3>
+          <h3>Balancing Act: Creativity vs. Technicality</h3>
           <p>
-            Hugo and Bootstrap favor speed and predictable outcomes, while
-            Tailwind and React provide more flexibility at the cost of setup and
-            larger bundles. Choose speed when deadlines matter, flexibility when
-            the design requires unique interactions or extensive customization.
-          </p>
-
-          <h3>Trade-offs: Dependencies vs. Simplicity</h3>
-          <p>
-            Node-based toolchains (Tailwind, React) add dependencies and build
-            complexity but yield modularity and tooling benefits. Ruby (Jekyll)
-            and binary tools (Hugo) can be simpler to run but may have ecosystem
-            trade-offs. Standalone libraries (GSAP, Bootstrap) often offer the
-            best simplicity with minimal setup.
-          </p>
-
-          <h3>How Node.js affects my process</h3>
-          <p>
-            Node.js enables modern workflows (bundlers, PostCSS, npm packages).
-            It increases developer velocity through automation (linting, builds)
-            but requires dependency management and occasional troubleshooting.
-            For static portfolio pages I weigh Node's benefits against the need
-            for a minimal, easily-deployable site.
+            As a designer, what truly interests me is how design
+            communicates—not how every piece of code works underneath. I enjoy
+            experimenting with tools like Tailwind or GSAP to understand
+            possibilities, but building an entire portfolio from scratch feels
+            unnecessarily heavy for what I want to express.
           </p>
 
           <h3>Using these tools in my portfolio</h3>
           <p>
-            I do not think I will build my portfolio by coding. Even though I
-            could use Hugo for fast builds, style with Tailwind for visual
-            consistency, and add selective React components (or plain JS) for
-            interactive showcases. Use Hygraph or Netlify CMS to manage
-            long-form content if I need non-technical editing. Finally, apply
-            GSAP for a few tasteful transitions to elevate perceived quality.
-            But I prefer a no-code/low-code approach to focus on content and
-            design rather than implementation details.
+            That's why I'll most likely continue using
+            <strong>Framer</strong> to design and publish my portfolio. It lets
+            me focus on composition, animation, and storytelling without getting
+            lost in build processes or debugging. It's visual, flexible, and
+            gives me creative control—the parts I care about most.
+          </p>
+
+          <h3>Reflecting on my learning journey</h3>
+          <p>
+            In the end, knowing about these technologies still shapes how I
+            design interfaces and think about structure. Even if I don't code
+            everything myself, I can collaborate better with developers and make
+            more informed design decisions.
           </p>
         </article>
       </section>
@@ -436,6 +427,37 @@
         );
 
         requestAnimationFrame(animate);
+      })();
+    </script>
+    <script>
+      // Highlight nav links when sections are in view
+      (function () {
+        const links = Array.from(document.querySelectorAll(".nav-inner a"));
+        const sections = links
+          .map((a) => {
+            const id = a.getAttribute("href")?.replace("#", "");
+            return id ? document.getElementById(id) : null;
+          })
+          .filter(Boolean);
+
+        if (!sections.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const id = entry.target.id;
+              const link = links.find(
+                (a) => a.getAttribute("href") === `#${id}`
+              );
+              if (!link) return;
+              if (entry.isIntersecting) link.classList.add("active");
+              else link.classList.remove("active");
+            });
+          },
+          { root: null, rootMargin: "-30% 0px -50% 0px", threshold: 0 }
+        );
+
+        sections.forEach((s) => observer.observe(s));
       })();
     </script>
   </body>

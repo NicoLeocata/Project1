@@ -1,4 +1,15 @@
 /* Resources page specific styles */
+
+html,
+body {
+  overflow-x: hidden;
+} /* ok para evitar scroll horizontal */
+main,
+.container {
+  overflow: visible;
+  height: auto;
+} /* importante para sticky */
+
 .resources-header {
   background: #000000; /* black header per user request */
   color: var(--white);
@@ -14,11 +25,114 @@
 }
 
 .resources-nav {
-  background: var(--white);
-  box-shadow: var(--muted-shadow);
+  /* keep nav on top of content while scrolling */
+  background: rgba(6, 8, 12, 0.18);
   position: sticky;
   top: 0;
-  z-index: 40;
+  z-index: 9999;
+  backdrop-filter: blur(6px);
+  background: transparent;
+  /* importante para aislar efectos y evitar glitches en Safari/WebKit */
+  isolation: isolate;
+  /* crea el stacking context para el ::before */
+  position: sticky;
+}
+
+/* Capa de blur completa */
+.resources-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* cubre todo el nav */
+  background: rgba(
+    6,
+    8,
+    12,
+    0.18
+  ); /* capa translúcida para que el blur “se vea” */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari */
+  border-bottom: 1px solid var(--section-divider);
+  pointer-events: none; /* no bloquear interacción con enlaces */
+  z-index: -1; /* queda detrás del contenido del nav */
+}
+
+.nav-inner {
+  display: flex;
+  gap: calc(var(--space-md) * 1);
+  align-items: center;
+  padding: calc(var(--space-sm) + 6px) 0;
+  justify-content: center;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+  box-shadow: var(--muted-shadow);
+  margin: 0.5rem auto;
+  max-width: var(--max-width);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.nav-inner::before {
+  content: "";
+  position: absolute;
+  inset: 6px 12px; /* margen interior opcional */
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04); /* leve glass */
+  pointer-events: none;
+  z-index: -1; /* detrás de los enlaces, delante del blur base */
+}
+
+.nav-inner a {
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: background 180ms ease, color 180ms ease, transform 160ms ease,
+    box-shadow 160ms ease;
+  border: 1px solid transparent;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+}
+.nav-inner a:hover,
+.nav-inner a:focus {
+  background: var(--primary-color);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+  outline: none;
+}
+.nav-inner a:focus-visible {
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18),
+    0 0 0 4px rgba(37, 99, 235, 0.08);
+}
+
+.nav-inner a.active {
+  background: linear-gradient(90deg, var(--primary-color), #60a5fa);
+  color: var(--white);
+  box-shadow: 0 10px 26px rgba(37, 99, 235, 0.14);
+}
+
+/* section underline */
+.tools-section {
+  margin-bottom: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-bottom: 1px solid var(--section-divider);
+}
+.tools-section h2 {
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+.tools-section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 4px;
+  margin-top: 8px;
 }
 
 /* make section titles visible on dark background */
@@ -39,12 +153,12 @@
   border-radius: calc(var(--base-radius) + 2px);
   padding: calc(var(--space-md) + 6px);
   border: 1px solid rgba(10, 10, 10, 0.06);
-  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.1), 0 2px 6px rgba(2, 6, 23, 0.05);
-  transition: transform 180ms ease, box-shadow 180ms ease;
-  will-change: transform, box-shadow;
+  box-shadow: 0 8px 22px rgba(2, 6, 23, 0.12), 0 2px 6px rgba(2, 6, 23, 0.06);
+  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    box-shadow 220ms ease;
 }
 .tool-card::before {
-  /* top accent stripe (kept subtle) */
+  /* top accent stripe */
   content: "";
   position: absolute;
   left: 0;
@@ -55,8 +169,8 @@
 }
 .tool-card:hover,
 .tool-card:focus-within {
-  transform: translate3d(0, -6px, 0);
-  box-shadow: 0 14px 36px rgba(2, 6, 23, 0.14), 0 4px 10px rgba(2, 6, 23, 0.06);
+  transform: translateY(-10px) rotate(-0.2deg);
+  box-shadow: 0 22px 48px rgba(2, 6, 23, 0.18), 0 6px 12px rgba(2, 6, 23, 0.08);
 }
 
 .tool-card h3 {
@@ -150,14 +264,15 @@
   box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   pointer-events: none;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 160ms ease, background 160ms ease, opacity 160ms ease,
-    box-shadow 160ms ease;
+  transform: translate(-50%, -50%);
+  transition: width 180ms ease, height 180ms ease, background 180ms ease,
+    opacity 180ms ease, box-shadow 180ms ease;
   z-index: 99999;
   mix-blend-mode: normal;
 }
 .cursor-follower.cursor-hover {
-  transform: translate(-50%, -50%) scale(2.6);
+  width: 36px;
+  height: 36px;
   background: var(--accent-color);
   box-shadow: 0 18px 40px rgba(17, 24, 39, 0.18);
   opacity: 0.98;
