@@ -20,42 +20,6 @@
   top: 0;
   z-index: 40;
 }
-.nav-inner {
-  display: flex;
-  gap: var(--space-md);
-  align-items: center;
-  padding: var(--space-sm) 0;
-}
-.nav-inner a {
-  color: var(--card-text-color);
-  padding: 8px 10px;
-  border-radius: 8px;
-}
-.nav-inner a:hover,
-.nav-inner a:focus {
-  background: rgba(37, 99, 235, 0.06);
-}
-
-.tools-section {
-  margin-bottom: var(--space-lg);
-  padding-top: var(--space-lg);
-}
-.tools-section {
-  border-bottom: 1px solid var(--section-divider);
-}
-.tools-section h2 {
-  position: relative;
-  padding-bottom: var(--space-sm);
-}
-.tools-section h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  background: var(--accent-color);
-  border-radius: 4px;
-  margin-top: 8px;
-}
 
 /* make section titles visible on dark background */
 .tools-section h2 {
@@ -75,12 +39,12 @@
   border-radius: calc(var(--base-radius) + 2px);
   padding: calc(var(--space-md) + 6px);
   border: 1px solid rgba(10, 10, 10, 0.06);
-  box-shadow: 0 8px 22px rgba(2, 6, 23, 0.12), 0 2px 6px rgba(2, 6, 23, 0.06);
-  transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1),
-    box-shadow 220ms ease;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.1), 0 2px 6px rgba(2, 6, 23, 0.05);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  will-change: transform, box-shadow;
 }
 .tool-card::before {
-  /* top accent stripe */
+  /* top accent stripe (kept subtle) */
   content: "";
   position: absolute;
   left: 0;
@@ -91,8 +55,8 @@
 }
 .tool-card:hover,
 .tool-card:focus-within {
-  transform: translateY(-10px) rotate(-0.2deg);
-  box-shadow: 0 22px 48px rgba(2, 6, 23, 0.18), 0 6px 12px rgba(2, 6, 23, 0.08);
+  transform: translate3d(0, -6px, 0);
+  box-shadow: 0 14px 36px rgba(2, 6, 23, 0.14), 0 4px 10px rgba(2, 6, 23, 0.06);
 }
 
 .tool-card h3 {
@@ -149,10 +113,11 @@
 /* place runtime badge at top-right of card for a badge-like feel */
 .tool-card .runtime-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 8px;
+  right: 8px;
   margin: 0;
   transform: translateZ(0);
+  box-shadow: 0 6px 16px rgba(2, 6, 23, 0.12);
 }
 
 .resources-footer {
@@ -185,15 +150,14 @@
   box-shadow: 0 6px 18px rgba(37, 99, 235, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: width 180ms ease, height 180ms ease, background 180ms ease,
-    opacity 180ms ease, box-shadow 180ms ease;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 160ms ease, background 160ms ease, opacity 160ms ease,
+    box-shadow 160ms ease;
   z-index: 99999;
   mix-blend-mode: normal;
 }
 .cursor-follower.cursor-hover {
-  width: 36px;
-  height: 36px;
+  transform: translate(-50%, -50%) scale(2.6);
   background: var(--accent-color);
   box-shadow: 0 18px 40px rgba(17, 24, 39, 0.18);
   opacity: 0.98;
